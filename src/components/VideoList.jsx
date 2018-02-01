@@ -1,12 +1,26 @@
-var VideoList = () => (
-  <div className="video-list">
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-  </div>
-);
+class VideoList extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.state = {
+    // //   title: exampleVideoData.snippet.title,
+    // //   description: exampleVideoData.snippet.description,
+    // //   thumbnail: exampleVideoData.snippet.thumbnails.default.url
+    // };
+  }
+  
+  render() {
+    // let eachVideo = exampleVideoData.map(() => {
+    // };
+
+    return (
+      <div className="video-list">
+        {exampleVideoData.map(item => 
+          <div><h5><em><VideoListEntry>{item}</VideoListEntry></em></h5></div>
+        )}
+      </div>
+    );
+  }
+}
 
 // PropTypes tell other developers what `props` a component expects
 // Warnings will be shown in the console when the defined rules are violated
