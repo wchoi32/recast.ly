@@ -1,14 +1,7 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      currentVideo:''
-    };
-  }
-
-  onListItemClick(e) {
-    e.preventDefault();
-    console.log('hello');
+    this.videos = window.exampleVideoData;
   }
   
   render() {
@@ -16,26 +9,21 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em><Search>Search</Search></em></h5></div>
+            <div><h5><em><Search/></em></h5></div>
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><h5><em><VideoPlayer>VideoPlayer</VideoPlayer></em></h5></div>
+            <div><h5><em><VideoPlayer videos={this.videos}/></em></h5></div>
           </div>
           <div className="col-md-5">
-            <div><h5><em><VideoList>VideoList</VideoList></em></h5></div>
+            <div><h5><em><VideoList videos={this.videos}/></em></h5></div>
           </div>
         </div>
       </div>
     );
   }
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-);
 
 // var App = () => (
 //   <div>
