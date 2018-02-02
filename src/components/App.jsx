@@ -3,13 +3,32 @@ class App extends React.Component {
     super(props);
     this.state = {
       nowPlaying: window.exampleVideoData[0],
-      videoList: window.exampleVideoData
+      videoList: window.exampleVideoData,
+      autoPlay: 0
     };
+
+    var bindFn = function(fn, context) {
+      return function() {
+        fn.apply(context, Array.from(arguments));
+      };
+    };
+    var boundNewSearch = bindFn(this.newSearch, this);
+    // this.newSearch = this.newSearch.bind(this)
   }
 
   onVideoClick(video) {
     this.setState({
-      nowPlaying: video.video
+      nowPlaying: video
+    });
+  }
+
+  toggleAutoPlay(value) {
+    let newNum = 0;
+    if (!value.autoPlay) {
+      newNum = 1;
+    }
+    this.setState({
+      autoPlay: newNum 
     });
   }
 
@@ -34,7 +53,7 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><h5><em><VideoPlayer videos={this.state.nowPlaying}/></em></h5></div>
+            <div><h5><em><VideoPlayer videos={this.state.nowPlaying} autoPlay={this.state.autoPlay} toggleAutoPlay={this.toggleAutoPlay.bind(this)}/></em></h5></div>
           </div>
           <div className="col-md-5">
             <div><h5><em><VideoList videos={this.state.videoList} onVideoClick={this.onVideoClick.bind(this)}/></em></h5></div>

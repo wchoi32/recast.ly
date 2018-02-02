@@ -32,7 +32,8 @@ var searchYouTube = (options, callback) => {
       key: window.YOUTUBE_API_KEY,
       q: options,
       maxResults: 5,
-      part: 'snippet'
+      part: 'snippet',
+      autoplay: 1
     },
 
     success: (data) => {
